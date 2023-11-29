@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="contactus_form" name="Contact Form" inherit_id="website_crm.contactus_form">
+        <xpath expr="///form" position="attributes">
+            <attribute name="id">form_contactus</attribute>
+        </xpath>
+        <xpath expr="///form/div[2]" position="replace">
+            <div class="form-group row form-field o_website_form_required_custom">
+                <label class="col-lg-3 col-md-4 col-form-label" for="contact_source">Contact Source</label>
+                <div class="col-lg-7 col-md-8">
+                    <select  class="form-control custom-select o_website_form_input" name="contact_source">
+                           <option t-attf-value="third">Third parties</option>
+                           <option t-attf-value="social_networks">Social Networks</option>
+                           <option t-attf-value="internet_search">Internet search</option>
+                     </select>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="///form/div[4]" position="replace">
+            <div id="div_change" style="display:none;">
+                <p class="alert alert-danger" role="alert">
+                    <span>The email is invalid. Must comply with the structure xxx@xxx</span>
+                </p>
+            </div>
+            <div class="form-group row form-field">
+                <label class="col-lg-3 col-md-4 col-form-label" for="partner_name">Your Company</label>
+                <div class="col-lg-7 col-md-8">
+                    <input type="text" class="form-control o_website_form_input" name="partner_name" t-att-value="request.params.get('name', '')" />
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>
